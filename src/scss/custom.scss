@@ -1,6 +1,6 @@
 
 
-// Your variable overrides
+//Your variable overrides
 // $body-bg: #000;
 // $body-color: #111;
 // $theme-colors: (
@@ -8,5 +8,8 @@
 //   "danger": #ff4136
 // );
 
-// @import '~bootstrap/scss/bootstrap.scss';
+
 @import './_variables.scss';
+
+@import './custom-breadcrumb';
+@import '~bootstrap/scss/bootstrap.scss';
