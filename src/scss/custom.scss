@@ -1,15 +1,33 @@
+/*!
+ * @version 1
+ * Copyright (c) 2019 cogent healht emr
+ * Author Sudin Shakya
+ */
+
+@import './variables';
+
+// Layout Options
+// @import "layout";
+
+// Custom Mixins
+@import "custom-mixins";
+
+// Custom Utility classes
+@import "custom-utilities";
+
+// @import "./aside";
+// @import "./footer";
+// @import "./header";
+// @import "./sidebar";
+
+@import "custom-components";
 
 
-//Your variable overrides
-// $body-bg: #000;
-// $body-color: #111;
-// $theme-colors: (
-//   "primary": #303030,
-//   "danger": #ff4136
-// );
+// Custom Properties support for Internet Explorer
+@import "ie-fix";
+
+// temp fixes
+@import "fixes";
 
 
-@import './_variables.scss';
 
-@import './custom-breadcrumb';
-@import '~bootstrap/scss/bootstrap.scss';

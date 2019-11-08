@@ -1,25 +1,19 @@
-// Required
+
+ @import '~bootstrap/scss/functions';
+
+ //custom colors
+@import "./variables/custom-colors";
+
+// Customized Bootstrap variables
+@import "./variables/custom-bootstrap-variable";
+
+@import '~bootstrap/scss/bootstrap';
 
 
-$blue:    #000000 !default;
-$indigo:  #000000 !default;
-$purple:  #000000 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #000000 !default;
-$teal:    #000000 !default;
-$cyan:    #17a2b8 !default;
 
 
-// $breadcrumb-bg:                      green !default;
 
 
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
 
-@import "node_modules/bootstrap/scss/buttons";
-@import "node_modules/bootstrap/scss/breadcrumb";
+
 

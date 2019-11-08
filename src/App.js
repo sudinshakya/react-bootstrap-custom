@@ -3,7 +3,7 @@ import React from 'react';
 import './App.scss';
 import { Button,Breadcrumb,Dropdown } from 'react-bootstrap';
 import 'bootstrap/scss/bootstrap.scss';
- import './scss/custom.scss';
+import './scss/custom.scss';
 
 
 function App() {

@@ -90,7 +90,7 @@ module.exports = function(webpackEnv) {
       },
       {
         loader: require.resolve('css-loader'),
-        options: cssOptions,
+        options:cssOptions,
       },
       {
         // Options for PostCSS as we reference these options twice
@@ -114,7 +114,9 @@ module.exports = function(webpackEnv) {
             // which in turn let's users customize the target behavior as per their needs.
             postcssNormalize(),
           ],
-          sourceMap: isEnvProduction && shouldUseSourceMap,
+          sourceMap: true,
+          import:true
+          //isEnvProduction && shouldUseSourceMap,
         },
       },
     ].filter(Boolean);
@@ -123,13 +125,15 @@ module.exports = function(webpackEnv) {
         {
           loader: require.resolve('resolve-url-loader'),
           options: {
-            sourceMap: isEnvProduction && shouldUseSourceMap,
+            sourceMap: true,//isEnvProduction && shouldUseSourceMap,
+            import:true
           },
         },
         {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            import:true
           },
         }
       );
@@ -141,11 +145,12 @@ module.exports = function(webpackEnv) {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
-    devtool: isEnvProduction
-      ? shouldUseSourceMap
-        ? 'source-map'
-        : false
-      : isEnvDevelopment && 'cheap-module-source-map',
+    // devtool: isEnvProduction
+    //   ? shouldUseSourceMap
+    //     ? 'source-map'
+    //     : false
+    //   : isEnvDevelopment && 'cheap-module-source-map',
+    devtool:'cheap-module-source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: [
@@ -250,7 +255,8 @@ module.exports = function(webpackEnv) {
           parallel: !isWsl,
           // Enable file caching
           cache: true,
-          sourceMap: shouldUseSourceMap,
+          sourceMap: true,
+          //import:true//shouldUseSourceMap,
         }),
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
@@ -264,8 +270,9 @@ module.exports = function(webpackEnv) {
                   // `annotation: true` appends the sourceMappingURL to the end of
                   // the css file, helping the browser find the sourcemap
                   annotation: true,
+                  
                 }
-              : true,
+              : false,
           },
         }),
       ],
@@ -443,7 +450,8 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
+                sourceMap: true,
+                import:true//isEnvProduction && shouldUseSourceMap,
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -457,7 +465,8 @@ module.exports = function(webpackEnv) {
               test: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
+                sourceMap: true,
+                import:true,   //isEnvProduction && shouldUseSourceMap,
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               }),
@@ -471,8 +480,8 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
                   sourceMap: true,
+                  import:true //isEnvProduction && shouldUseSourceMap,
                 },
                 'sass-loader'
               ),
@@ -489,8 +498,8 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
                   sourceMap: true,
+                  import:true, //isEnvProduction && shouldUseSourceMap,
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
@@ -680,3 +689,4 @@ module.exports = function(webpackEnv) {
     performance: false,
   };
 };
+ 
